@@ -27,22 +27,24 @@ module.exports = {
 					},
 				], // 从后往前依次执行loader
 			},
-			// {
-			// 	test: /\.s[ca]ss$/,
-			// 	use: ["style-loader", "css-loader", "scss-loader"],
-			// },
-			// {
-			// 	test: /\.m?js$/, // esmodule 模块
-			// 	use: {
-			// 		loader: "babel-loader",
-			// 		options: ["@babel/preset-env"],
-			// 	},
-			// },
-			// // 图片处理
-			// {
-			// 	test: /\.(png|jpe?g|gif|svg|webp)$/,
-			// 	type: "asset/resource",
-			// },
+			{
+				test: /\.s[ca]ss$/,
+				use: ["style-loader", "css-loader", "sass-loader"],
+			},
+			{
+				test: /\.m?js$/, // esmodule 模块
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-env"],
+					},
+				},
+			},
+			// 图片处理
+			{
+				test: /\.(png|jpe?g|gif|svg|webp)$/,
+				type: "asset/resource",
+			},
 		],
 	},
 	// 增加webpack的功能
