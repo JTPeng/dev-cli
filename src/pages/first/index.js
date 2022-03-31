@@ -1,9 +1,4 @@
-import Vue from "vue"
-import router from "./router"
-new Vue({
-	router,
-}).$mount("#app")
-// new Vue({
-// 	el: "#app",
-// 	render: (h) => h(App),
-// })
+import { createApp } from "vue"
+import App from "./App"
+const app = createApp(App)
+app.mount("#app")

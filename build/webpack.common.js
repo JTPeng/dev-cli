@@ -81,6 +81,8 @@ const config = {
 		new webpack.DefinePlugin({
 			__env: JSON.stringify(env),
 			__mode: JSON.stringify(mode),
+			__VUE_OPTIONS_API__: "true", // 不适用 vue2的选项式api
+			__VUE_PROD_DEVTOOLS__: "false", // 生产环境不需要 devtools支持
 		}),
 		new VueLoaderPlugin(), // 识别vue文件内 script 和 style标签里的内容
 		// html

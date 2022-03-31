@@ -1,11 +1,4 @@
-import Vue from "vue"
-import App from "./App.vue"
-import store from './store'
-// new Vue({
-// 	store
-// }).$mount("#app")
-new Vue({
-	el: "#app",
-	store,
-	render: (h) => h(App),
-})
+import { createApp } from "vue"
+import App from "./App"
+const app = createApp(App)
+app.mount("#app")
