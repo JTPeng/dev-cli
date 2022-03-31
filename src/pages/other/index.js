@@ -1,7 +1,11 @@
 import Vue from "vue"
 import App from "./App.vue"
-// new Vue({}).$mount("#app")
+import store from './store'
+// new Vue({
+// 	store
+// }).$mount("#app")
 new Vue({
 	el: "#app",
+	store,
 	render: (h) => h(App),
 })
