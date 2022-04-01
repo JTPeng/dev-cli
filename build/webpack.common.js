@@ -1,97 +1,93 @@
-const { resolvePath, env, mode, getEntries } = require("./util")
+const { resolvePath, env, mode } = require("./util")
 const webpack = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
+// 压缩css
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+// 压缩js
 const { VueLoaderPlugin } = require("vue-loader")
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
+
 console.log("env", env, mode)
-const isPrd = mode === "build"
-const contentHashType = isPrd ? ".[contenthash:7]" : ""
-const entry = getEntries(`./src/pages/*/index.js`)
-console.log(entry)
 const config = {
-	// target: mode === "serve" ? "web" : "browserslist",
-	entry,
-	resolve: {
-		extensions: [".js", ".vue", ".json"],
-		alias: {
-			vue$: "vue/dist/vue.esm.js",
-		},
-	},
+	entry: "./src/main.js",
 	module: {
 		rules: [
 			{
 				test: /\.vue$/,
 				loader: "vue-loader",
 			},
+			// 配置处理样式的loader
 			{
 				test: /\.css$/,
-				use: [
-					isPrd
-						? {
-								loader: MiniCssExtractPlugin.loader,
-								options: {
-									// 这里可以指定一个 publicPath
-									// 默认使用 webpackOptions.output中的publicPath
-									// MiniCssExtractPlugin资源路径指向问题
-									publicPath: "../",
-								},
-						  }
-						: "vue-style-loader",
-					{
-						loader: "css-loader",
-						options: {
-							esModule: false,
+				use: ["style-loader", "css-loader"],
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: "babel-loader",
+					// 配置es6转es5的loader
+					options: {
+						presets: ["@babel/preset-env"],
+					},
+				},
+			},
+			{
+				test: /\.ts$/,
+				use: ["ts-loader"],
+			},
+			// 配置静态资源的loader
+			{
+				test: /\.(jpe?g|png|gif|bmp)$/,
+				use: {
+					loader: "url-loader",
+					options: {
+						limit: 1024,
+						fallback: {
+							loader: "file-loader",
+							options: {
+								name: "[name].[ext]",
+							},
 						},
 					},
-				],
-			},
-			{
-				test: /\.m?js/,
-				loader: "babel-loader",
-				exclude: /node_modules/,
-				options: {
-					cacheDirectory: true,
 				},
 			},
 			{
-				test: /\.(jpe?g|png|gif|svg)$/i,
-				loader: "url-loader",
-				options: {
-					esModule: false,
-					limit: 1024 * 5,
-					name: `images/[name]${contentHashType}.[ext]`,
+				test: /\.(mp4|ogg|mp3|wav)$/,
+				use: {
+					loader: "url-loader",
+					options: {
+						limit: 1024,
+						fallback: {
+							loader: "file-loader",
+							options: {
+								name: "[name].[ext]",
+							},
+						},
+					},
 				},
 			},
-			// {
-			// 	test: /.\(woff2?|eot|ttf|otf)(\?.*)?$/,
-			// 	loader: "url-loader",
-			// 	options: {
-			// 		limit: 10000,
-			// 		name: `css/fonts/[name]${contentHashType}.[ext]`,
-			// 	},
-			// },
 		],
-		// noParse: [
-		// 	resolvePath('')
-		// ],
 	},
 	plugins: [
 		// 全局环境变量
 		new webpack.DefinePlugin({
 			__env: JSON.stringify(env),
 			__mode: JSON.stringify(mode),
-			__VUE_OPTIONS_API__: "true", // 不适用 vue2的选项式api
-			__VUE_PROD_DEVTOOLS__: "false", // 生产环境不需要 devtools支持
+			// __VUE_OPTIONS_API__: "true", // 不适用 vue2的选项式api   默认支持vue2写法 需要关闭则改为fasle
+			// __VUE_PROD_DEVTOOLS__: "false", // 生产环境不需要 devtools支持
 		}),
-		new VueLoaderPlugin(), // 识别vue文件内 script 和 style标签里的内容
-		// html
-		...Object.keys(entry).map((item) => {
-			return new HtmlWebpackPlugin({
-				template: resolvePath("../public/index.html"),
-				chunks: [item],
-				filename: `pages/${item}.html`,
-			})
+		new VueLoaderPlugin(),
+		// 配置处理html
+		new HtmlWebpackPlugin({
+			template: "./public/index.html",
+			filename: "index.html",
+			title: "vue3",
+			minify: {
+				collapseWhitespace: true, // 去掉空格
+				removeComments: true, // 去掉注释
+			},
 		}),
 		// 不需要编译的文件
 		new CopyWebpackPlugin({
@@ -102,10 +98,10 @@ const config = {
 				},
 			],
 		}),
-		// 提取css
 		new MiniCssExtractPlugin({
-			filename: `css/[name]${contentHashType}.css`,
+			filename: "[name].css",
 		}),
+		// new BundleAnalyzerPlugin(),
 	],
 	optimization: {
 		// 拆包

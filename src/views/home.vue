@@ -6,9 +6,14 @@
 
 <script setup>
 	import { ref } from "vue"
-
 	const num = ref(0)
 	const addNum = () => {
 		num.value += 1
 	}
 </script>
+
+<style scoped>
+	h1 {
+		color: red;
+	}
+</style>

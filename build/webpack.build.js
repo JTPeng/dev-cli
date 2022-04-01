@@ -10,7 +10,7 @@ const buildConfig = {
 	output: {
 		path: resolvePath("../dist"),
 		filename: "js/[name].[contenthash:7].js",
-		chunkFilename: "js/[name]-async.[contenthash:7].js",
+		chunkFilename: "js/[name].[contenthash:7].js",
 	},
 	plugins: [new CleanWebpackPlugin(), new OptimizeCssPlugin()],
 }

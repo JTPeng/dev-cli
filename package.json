@@ -8,9 +8,6 @@
 		"prd": "cross-env env=prd mode=serve webpack serve --config ./build/webpack.serve.js",
 		"build-dev": "cross-env env=dev mode=build webpack --config ./build/webpack.build.js",
 		"build-prd": "cross-env env=prd mode=build webpack --config ./build/webpack.build.js",
-		"build": "webpack",
-		"build:dev": "cross-env env=dev webpack",
-		"serve": "cross-env env=dev webpack serve",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -30,6 +27,7 @@
 		"babel-loader": "^8.2.4",
 		"babel-polyfill": "^6.26.0",
 		"clean-webpack-plugin": "^4.0.0",
+		"copy-webpack-plugin": "^10.2.4",
 		"cross-env": "^7.0.3",
 		"css-loader": "^6.7.1",
 		"file-loader": "^6.2.0",
