@@ -35,7 +35,20 @@ const config = {
 			},
 			{
 				test: /\.ts$/,
-				use: ["ts-loader"],
+				use: [
+					{
+						loader: "ts-loader",
+						options: {
+							/**
+							 * vue 单文件组件中假如使用了 lang="ts"， 
+							 * ts-loader需要配置 appendTsSuffixTo: [/\.vue$/]，
+							 * 用来给 .vue文件添加个 .ts后缀用于编译。
+							 */
+							appendTsSuffixTo: [/.vue$/],
+						},
+					},
+				],
+				// use: ["ts-loader"],
 			},
 			// 配置静态资源的loader
 			{

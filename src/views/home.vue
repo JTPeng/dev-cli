@@ -4,7 +4,7 @@
 	<router-link to="/about">about</router-link>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 	import { ref } from "vue"
 	const num = ref(0)
 	const addNum = () => {
