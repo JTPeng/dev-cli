@@ -4,8 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "cross-env env=dev mode=serve webpack serve --config ./build/webpack.serve.js",
-		"prd": "cross-env env=prd mode=serve webpack serve --config ./build/webpack.serve.js",
+		"dev": "cross-env env=dev NODE_ENV=devpoment mode=serve webpack serve --config ./build/webpack.serve.js",
+		"prd": "cross-env env=prd NODE_ENV=production mode=serve webpack serve --config ./build/webpack.serve.js",
 		"build-dev": "cross-env env=dev mode=build webpack --config ./build/webpack.build.js",
 		"build-prd": "cross-env env=prd mode=build webpack --config ./build/webpack.build.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
