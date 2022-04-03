@@ -20,7 +20,7 @@ const config = {
 			// 配置处理样式的loader
 			{
 				test: /\.css$/,
-				use: ["style-loader", "css-loader"],
+				use: ["cache-loader", "style-loader", "css-loader"],
 			},
 			{
 				test: /\.js$/,
@@ -30,6 +30,7 @@ const config = {
 					// 配置es6转es5的loader
 					options: {
 						presets: ["@babel/preset-env"],
+						cacheDirectory: true,
 					},
 				},
 			},
@@ -40,7 +41,7 @@ const config = {
 						loader: "ts-loader",
 						options: {
 							/**
-							 * vue 单文件组件中假如使用了 lang="ts"， 
+							 * vue 单文件组件中假如使用了 lang="ts"，
 							 * ts-loader需要配置 appendTsSuffixTo: [/\.vue$/]，
 							 * 用来给 .vue文件添加个 .ts后缀用于编译。
 							 */
