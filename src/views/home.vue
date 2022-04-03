@@ -5,11 +5,25 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
-  const num = ref(0)
+  import { reactive, ref } from 'vue'
+  interface interName {
+    name: string
+    age: number
+    [name: string]: any
+  }
+  interface interNum {
+    value: number
+  }
+  const num: interNum = ref(0)
+  const nameParams = reactive<interName>({
+    name: 'jack',
+    age: 18,
+    sex: '男',
+  })
   const addNum = () => {
     num.value += 1
   }
+  console.log(nameParams)
 </script>
 
 <style scoped>
