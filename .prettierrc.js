@@ -1,5 +1,5 @@
 module.exports = {
-  printWidth: 100, // 超过最大值换行
+  printWidth: 80, // 超过最大值换行
   tabWidth: 2, // 缩进字节数
   useTabs: false, // // 缩进不使用tab，使用空格
   semi: false, // 句尾添加分号
@@ -12,5 +12,5 @@ module.exports = {
   htmlWhitespaceSensitivity: 'ignore',
   vueIndentScriptAndStyle: true,
   arrowParens: 'avoid', // (x) => {} 箭头函数参数只有一个时是否要有小括号。avoid：省略括号
-  endOfLine: 'lf',  // 结尾是 \n \r \n\r
+  endOfLine: 'lf', // 结尾是 \n \r \n\r
 }
