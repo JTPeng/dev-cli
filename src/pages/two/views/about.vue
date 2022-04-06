@@ -1,5 +1,6 @@
 <template>
   <h1>about</h1>
+  <h2>query:{{ routeQuery }}</h2>
   <h3>{{ num }}</h3>
   <button @click="addNum">addNum</button>
   <h1>{{ msg }}</h1>
@@ -22,9 +23,14 @@
 </template>
 
 <script setup>
+  import { useRoute } from 'vue-router'
   import { useCounterStore } from '../store/counter'
   import { storeToRefs } from 'pinia'
-  import { ref } from 'vue'
+  import { reactive, ref } from 'vue'
+  const route = useRoute()
+  const routeQuery = reactive({
+    ...route.query,
+  })
   // 实例化仓库
   const counterStore = useCounterStore()
   // 解构并使数据具有响应式

@@ -1,59 +1,59 @@
 {
-	"name": "vue-webpackl-study",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"dev": "cross-env env=dev NODE_ENV=devpoment mode=serve webpack serve --config ./build/webpack.serve.js",
-		"prd": "cross-env env=prd NODE_ENV=production mode=serve webpack serve --config ./build/webpack.serve.js",
-		"build-dev": "cross-env env=dev mode=build webpack --config ./build/webpack.build.js",
-		"build-prd": "cross-env env=prd mode=build webpack --config ./build/webpack.build.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/JTPeng/vue-dev-cli/tree/dev-2.0"
-	},
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"pinia": "^2.0.13",
-		"vue": "^3.2.31",
-		"vue-router": "^4.0.14"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.17.8",
-		"@babel/preset-env": "^7.16.11",
-		"@vue/compiler-sfc": "^3.2.31",
-		"babel-loader": "^8.2.4",
-		"babel-polyfill": "^6.26.0",
-		"cache-loader": "^4.1.0",
-		"clean-webpack-plugin": "^4.0.0",
-		"copy-webpack-plugin": "^10.2.4",
-		"cross-env": "^7.0.3",
-		"css-loader": "^6.7.1",
-		"file-loader": "^6.2.0",
-		"html-webpack-plugin": "^5.5.0",
-		"mini-css-extract-plugin": "^2.6.0",
-		"optimize-css-assets-webpack-plugin": "^6.0.1",
-		"style-loader": "^3.3.1",
-		"terser-webpack-plugin": "^5.3.1",
-		"ts-loader": "^9.2.8",
-		"typescript": "^4.6.3",
-		"url-loader": "^4.1.1",
-		"vue-loader": "^17.0.0",
-		"webpack": "^5.70.0",
-		"webpack-bundle-analyzer": "^4.5.0",
-		"webpack-cli": "^4.9.2",
-		"webpack-dev-server": "^4.7.4",
-		"webpack-merge": "^5.8.0",
-		"webpack-server": "^0.1.2"
-	},
-	"browserslist": [
-		"> 1%",
-		"last 2 versions",
-		"not dead",
-		"Android >= 4.0",
-		"iOS >= 8"
-	]
+  "name": "vue-webpackl-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env env=dev NODE_ENV=devpoment mode=serve webpack serve --config ./build/webpack.serve.js",
+    "prd": "cross-env env=prd NODE_ENV=production mode=serve webpack serve --config ./build/webpack.serve.js",
+    "size": "cross-env env=size NODE_ENV=production mode=serve webpack serve --config ./build/webpack.serve.js",
+    "build-dev": "cross-env env=dev mode=build webpack --config ./build/webpack.build.js",
+    "build-prd": "cross-env env=prd mode=build webpack --config ./build/webpack.build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JTPeng/vue-dev-cli/tree/dev-2.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pinia": "^2.0.13",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@vue/compiler-sfc": "^3.2.31",
+    "babel-loader": "^8.2.4",
+    "babel-polyfill": "^6.26.0",
+    "cache-loader": "^4.1.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-loader": "^9.2.8",
+    "typescript": "^4.6.3",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^17.0.0",
+    "webpack": "^5.70.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4",
+    "webpack-merge": "^5.8.0",
+    "webpack-server": "^0.1.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "Android >= 4.0",
+    "iOS >= 8"
+  ]
 }
