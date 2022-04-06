@@ -24,9 +24,8 @@ export const useCounterStore = defineStore('counter', {
     },
   },
   actions: {
-    increment(state) {
-      console.log(state)
-      // state.counter += 1
+    increment() {
+      this.counter += 1
     },
   },
 })
