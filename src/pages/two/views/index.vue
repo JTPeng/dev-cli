@@ -2,6 +2,8 @@
   <h1>{{ pageName }}</h1>
   <div class="container">
     <p>{{ counter.num }}</p>
+    <p>{{ counter.age }}</p>
+    <p>{{ counter.sex }}</p>
     <button @click="addNum">addNum</button>
   </div>
   <div class="router-container">
@@ -9,15 +11,17 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
   import { reactive, ref } from 'vue'
   import { useRouter } from 'vue-router'
-
+  import { interCounter } from '../types/twoIndex'
   const router = useRouter()
   const pageName = ref('Index')
 
-  const counter = reactive({
+  const counter = reactive<interCounter>({
     num: 0,
+    age: 18,
+    sex: '男',
   })
 
   const addNum = () => {
