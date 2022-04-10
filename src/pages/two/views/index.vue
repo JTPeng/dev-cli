@@ -14,11 +14,12 @@
 <script lang="ts" setup>
   import { reactive, ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { interCounter } from '../types/twoIndex'
+  // import { interCounter } from '../types/twoIndex'
   const router = useRouter()
   const pageName = ref('Index')
 
-  const counter = reactive<interCounter>({
+  // const counter = reactive<interCounter>({
+  const counter = reactive({
     num: 0,
     age: 18,
     sex: '男',

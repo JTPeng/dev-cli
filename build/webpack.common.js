@@ -13,6 +13,11 @@ const entries = getEntries('./src/pages/*/index.js')
 const config = {
   // entry: './src/main.js',
   entry: entries,
+  resolve: {
+    alias: {
+      '@': resolvePath('../src'),
+    },
+  },
   module: {
     rules: [
       {
@@ -105,8 +110,8 @@ const config = {
     new webpack.DefinePlugin({
       __env: JSON.stringify(env),
       __mode: JSON.stringify(mode),
-      // __VUE_OPTIONS_API__: "true", // 不适用 vue2的选项式api   默认支持vue2写法 需要关闭则改为fasle
-      // __VUE_PROD_DEVTOOLS__: "false", // 生产环境不需要 devtools支持
+      __VUE_OPTIONS_API__: 'false', // 不适用 vue2的选项式api   默认支持vue2写法 需要关闭则改为fasle
+      __VUE_PROD_DEVTOOLS__: 'false', // 生产环境不需要 devtools支持
     }),
     new VueLoaderPlugin(),
     // 配置处理html
